@@ -6,6 +6,13 @@ All notable changes to this update repository are tracked here.
 
 ### Fixed
 
+- Published `0.1.0-5` packages to fix `zyntrix-tui` startup after version checks
+  succeeded but the home screen crashed on shell tile loading.
+- Published `0.1.0-4` packages to make `zyntrix-tui` resolve shell modules from
+  `/opt/zyntrix-shell` on installed systems.
+- Published `0.1.0-3` packages to include `zyntrix-tui`, its bundled `tui/`
+  Python module, the `/usr/bin/zyntrix-tui` wrapper, and the `python3-textual`
+  dependency in `zyntrix-cli`.
 - Resolved APT `Hash Sum mismatch` risk by identifying stale signed metadata as the cause.
 - Published `0.1.0-2` packages to avoid `zyntrix-shell` maintainer scripts terminating `dpkg` during upgrades.
 - Improved command block contrast on the updates page so terminal commands remain readable.
