@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-REPO_URL="${ZYNTRIX_REPO_URL:-https://updates.zyntrixos.local/apt}"
+REPO_URL="${ZYNTRIX_REPO_URL:-https://zyntrixsolutions.github.io/ZyntrixOS}"
 CHANNEL="stable"
 KEY_FILE=""
 OFFLINE_DIR=""
@@ -16,7 +16,9 @@ log() { echo "==> $*"; }
 
 usage() {
     cat <<EOF
-Usage: sudo scripts/setup-repo.sh [options]
+Usage:
+  curl -fsSL https://zyntrixsolutions.github.io/ZyntrixOS/setup-repo.sh | sudo bash -s -- [options]
+  sudo ./setup-repo.sh [options]
 
 Options:
   --repo-url URL       Static APT repository URL
@@ -116,7 +118,7 @@ log "Installing ZyntrixOS APT signing key"
 install_key
 
 mkdir -p /etc/apt/sources.list.d /etc/zyntrix
-printf 'deb [arch=amd64 signed-by=%s] %s %s main\n' "$KEYRING" "$REPO_URL" "$CHANNEL" > "$SOURCE_FILE"
+printf 'deb [arch=amd64 signed-by=%s] %s %s main\n' "$KEYRING" "${REPO_URL%/}" "$CHANNEL" > "$SOURCE_FILE"
 printf '%s\n' "$CHANNEL" > /etc/zyntrix/channel
 
 if [ ! -f /etc/zyntrix/update-policy.json ]; then
@@ -137,4 +139,4 @@ if [ "$NO_UPDATE" != "1" ]; then
     apt-get update
 fi
 
-log "ZyntrixOS ${CHANNEL} repository configured at ${REPO_URL}"
+log "ZyntrixOS ${CHANNEL} repository configured at ${REPO_URL%/}"

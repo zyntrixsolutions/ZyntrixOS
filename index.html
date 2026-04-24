@@ -3,80 +3,728 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZyntrixOS Package Repository</title>
+    <title>ZyntrixOS Updates</title>
+    <meta
+        name="description"
+        content="Install ZyntrixOS updates, switch channels, and track the latest published packages from the official repository."
+    >
     <style>
+        :root {
+            --bg: #f5efe4;
+            --panel: rgba(255, 252, 246, 0.88);
+            --panel-strong: #fffaf0;
+            --text: #1f1a16;
+            --muted: #65594f;
+            --line: rgba(80, 58, 42, 0.14);
+            --accent: #c84f1b;
+            --accent-dark: #8f3410;
+            --accent-soft: rgba(200, 79, 27, 0.12);
+            --success: #215f3d;
+            --shadow: 0 24px 80px rgba(74, 41, 22, 0.14);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+            --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+            --sans: "Space Grotesk", "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 800px;
+            margin: 0;
+            font-family: var(--sans);
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(255, 176, 115, 0.45), transparent 28%),
+                radial-gradient(circle at top right, rgba(255, 228, 162, 0.55), transparent 30%),
+                linear-gradient(180deg, #f4ebdd 0%, #f7f2e8 45%, #efe4d2 100%);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1120px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
+            padding: 28px 0 56px;
         }
-        h1 { color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 0.5rem; }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'SF Mono', Monaco, monospace;
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 247, 235, 0.94)),
+                linear-gradient(135deg, rgba(200, 79, 27, 0.1), rgba(33, 95, 61, 0.06));
+            box-shadow: var(--shadow);
+            padding: 34px;
         }
-        pre {
-            background: #f4f4f4;
-            padding: 1rem;
-            border-radius: 5px;
-            overflow-x: auto;
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto -10% -30% auto;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 79, 27, 0.24), transparent 66%);
+            pointer-events: none;
         }
-        .channel { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 3px; font-weight: bold; }
-        .stable { background: #28a745; color: white; }
-        .beta { background: #ffc107; color: black; }
-        .canary { background: #6f42c1; color: white; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(80, 58, 42, 0.1);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #db6b32, #8f3410);
+            box-shadow: 0 0 0 6px rgba(200, 79, 27, 0.12);
+        }
+
+        h1, h2, h3, p {
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.8rem);
+            line-height: 0.96;
+            letter-spacing: -0.05em;
+            margin: 20px 0 16px;
+            max-width: 10ch;
+        }
+
+        .lead {
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .hero-grid,
+        .stats,
+        .cards,
+        .steps,
+        .package-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .hero-grid {
+            grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+            align-items: start;
+            margin-top: 26px;
+        }
+
+        .panel,
+        .stat,
+        .card,
+        .step,
+        .package-card {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+        }
+
+        .hero-panel {
+            padding: 22px;
+        }
+
+        .hero-panel h2 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .stats {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 18px;
+        }
+
+        .stat {
+            padding: 16px;
+        }
+
+        .label {
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .value {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .shellbox {
+            position: relative;
+            padding: 16px 16px 18px;
+            background: #1d1916;
+            color: #f7eadc;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .shellbox::before {
+            content: "terminal";
+            display: block;
+            color: rgba(247, 234, 220, 0.64);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 12px;
+        }
+
+        .shellbox code,
+        .command code {
+            font-family: var(--mono);
+            font-size: 0.94rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .command {
+            position: relative;
+            padding: 16px 70px 16px 16px;
+            border-radius: var(--radius-sm);
+            background: #231d18;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 12px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff7ec;
+            padding: 8px 12px;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .copy-btn:hover,
+        .copy-btn:focus-visible {
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        .cta-row,
+        .asset-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .button,
+        .ghost-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 160ms ease, background 160ms ease;
+        }
+
+        .button {
+            background: var(--accent);
+            color: #fff8f1;
+        }
+
+        .ghost-button {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+
+        .button:hover,
+        .ghost-button:hover {
+            transform: translateY(-1px);
+        }
+
+        main {
+            margin-top: 24px;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        .cards {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .card,
+        .step,
+        .package-card {
+            padding: 22px;
+        }
+
+        .step-index {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            color: var(--accent-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .steps {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .package-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .section-head p {
+            margin-bottom: 0;
+        }
+
+        .status {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .status.ok {
+            color: var(--success);
+        }
+
+        .package-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .package-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .meta-pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(200, 79, 27, 0.08);
+            color: var(--accent-dark);
+            font-size: 0.85rem;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 18px 0 8px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 920px) {
+            .hero-grid,
+            .cards,
+            .steps,
+            .package-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>ZyntrixOS Package Repository</h1>
-    <p>Static APT repository for ZyntrixOS system updates.</p>
-    
-    <h2>Repository Info</h2>
-    <ul>
-        <li><strong>Channel:</strong> <span class="channel stable">stable</span></li>
-        <li><strong>Version:</strong> 0.1.0-1</li>
-        <li><strong>Architecture:</strong> amd64</li>
-        <li><strong>URL:</strong> <code>https://zyntrixsolutions.github.io/zyntrixOS</code></li>
-    </ul>
-    
-    <h2>Available Packages</h2>
-    <ul>
-        <li><code>zyntrix-update</code> — Update daemon and CLI</li>
-        <li><code>zyntrix-shell</code> — Desktop UI and shell components</li>
-        <li><code>zyntrix-cli</code> — Developer CLI and templates</li>
-        <li><code>zyntrix-config</code> — WM configs and theming</li>
-        <li><code>zyntrix-os-base</code> — OS branding assets</li>
-    </ul>
-    
-    <h2>Quick Setup</h2>
-    <p>On a ZyntrixOS system, run:</p>
-    <pre>sudo ./scripts/setup-repo.sh \
-  --repo-url https://zyntrixsolutions.github.io/zyntrixOS \
-  --channel stable</pre>
-    
-    <h2>Manual APT Setup</h2>
-    <p>Add to <code>/etc/apt/sources.list.d/zyntrix.list</code>:</p>
-    <pre>deb [arch=amd64] https://zyntrixsolutions.github.io/zyntrixOS stable main</pre>
-    
-    <h2>Repository Structure</h2>
-    <pre>dists/stable/
-├── Release
-├── main/binary-amd64/Packages.gz
-└── ...
+    <div class="page">
+        <header class="hero">
+            <div class="eyebrow">
+                <span class="dot"></span>
+                Official ZyntrixOS update repo
+            </div>
+            <h1>Install once. Update from here.</h1>
+            <p class="lead">
+                This repository is the public entrypoint for ZyntrixOS packages. Use it to add the
+                official APT source, track the latest stable build, and keep your system updating
+                from the same place your packages are published.
+            </p>
 
-pool/main/z/
-├── zyntrix-cli/*.deb
-├── zyntrix-config/*.deb
-├── zyntrix-os-base/*.deb
-├── zyntrix-shell/*.deb
-└── zyntrix-update/*.deb</pre>
-    
-    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
-        <p>ZyntrixOS — <a href="https://github.com/amakodev/ZyntrixOS">GitHub</a></p>
-    </footer>
+            <div class="hero-grid">
+                <div class="hero-panel panel">
+                    <h2>Quick install</h2>
+                    <p class="muted">
+                        Best for new systems. This downloads the repo installer from this page,
+                        adds the signing key, writes the APT source, and refreshes package metadata.
+                    </p>
+                    <div class="shellbox">
+                        <div class="command">
+                            <button class="copy-btn" type="button" data-copy-target="install-command">Copy</button>
+                            <code id="install-command">curl -fsSL https://zyntrixsolutions.github.io/ZyntrixOS/setup-repo.sh | sudo bash -s -- --repo-url https://zyntrixsolutions.github.io/ZyntrixOS --channel stable</code>
+                        </div>
+                    </div>
+                    <div class="cta-row">
+                        <a class="button" href="./setup-repo.sh">Download installer</a>
+                        <a class="ghost-button" href="./zyntrix-archive-keyring.gpg">Download signing key</a>
+                    </div>
+                </div>
+
+                <div class="hero-panel panel">
+                    <h2>Keep updating from this repo</h2>
+                    <p class="muted">
+                        Once installed, your system pulls new packages from this repo through normal
+                        APT updates.
+                    </p>
+                    <div class="chip-row">
+                        <div class="chip">Channel: <strong id="repo-channel">stable</strong></div>
+                        <div class="chip">Packages: <strong id="package-count">5</strong></div>
+                        <div class="chip">Arch: <strong>amd64</strong></div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="label">Latest version</div>
+                            <div class="value" id="latest-version">0.1.0-1</div>
+                        </div>
+                        <div class="stat">
+                            <div class="label">Published</div>
+                            <div class="value" id="published-at">Loading...</div>
+                        </div>
+                        <div class="stat">
+                            <div class="label">Repo status</div>
+                            <div class="value" id="repo-status">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="cards">
+                <article class="card">
+                    <h2>New install</h2>
+                    <p class="muted">
+                        Start here if this machine has never been pointed at the ZyntrixOS package repo.
+                    </p>
+                    <div class="command">
+                        <button class="copy-btn" type="button" data-copy-target="apt-install-command">Copy</button>
+                        <code id="apt-install-command">sudo apt update &amp;&amp; sudo apt install zyntrix-update zyntrix-shell zyntrix-cli zyntrix-config zyntrix-os-base</code>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h2>Update existing system</h2>
+                    <p class="muted">
+                        If the repo is already configured, this pulls the latest published packages from here.
+                    </p>
+                    <div class="command">
+                        <button class="copy-btn" type="button" data-copy-target="update-command">Copy</button>
+                        <code id="update-command">sudo apt update &amp;&amp; sudo apt full-upgrade</code>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h2>Switch or reapply channel</h2>
+                    <p class="muted">
+                        Run the installer again with a channel to re-point the machine at this repo cleanly.
+                    </p>
+                    <div class="command">
+                        <button class="copy-btn" type="button" data-copy-target="channel-command">Copy</button>
+                        <code id="channel-command">curl -fsSL https://zyntrixsolutions.github.io/ZyntrixOS/setup-repo.sh | sudo bash -s -- --repo-url https://zyntrixsolutions.github.io/ZyntrixOS --channel stable</code>
+                    </div>
+                </article>
+            </section>
+
+            <section>
+                <div class="section-head">
+                    <div>
+                        <h2>How updates work</h2>
+                        <p class="muted">Everything a client needs is hosted in this repo.</p>
+                    </div>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <div class="step-index">1</div>
+                        <h3>Add the source</h3>
+                        <p class="muted">
+                            `setup-repo.sh` installs `zyntrix-archive-keyring.gpg` and writes the
+                            repo entry into `/etc/apt/sources.list.d/zyntrix.list`.
+                        </p>
+                    </article>
+                    <article class="step">
+                        <div class="step-index">2</div>
+                        <h3>Refresh package metadata</h3>
+                        <p class="muted">
+                            A normal `apt update` fetches the signed metadata from `dists/stable/`
+                            and sees any newly published versions.
+                        </p>
+                    </article>
+                    <article class="step">
+                        <div class="step-index">3</div>
+                        <h3>Upgrade from the same source</h3>
+                        <p class="muted">
+                            `apt full-upgrade` installs the latest packages from this repo, so users
+                            keep updating from the same public entrypoint they installed from.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-head">
+                    <div>
+                        <h2>Published packages</h2>
+                        <p class="muted">Loaded client-side from the repository metadata.</p>
+                    </div>
+                    <div class="status" id="packages-status">Reading package index...</div>
+                </div>
+                <div class="package-grid" id="package-grid">
+                    <article class="package-card">
+                        <h3>Loading packages</h3>
+                        <p class="muted">The page is reading `dists/stable/main/binary-amd64/Packages`.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="section-head">
+                    <div>
+                        <h2>Manual APT setup</h2>
+                        <p class="muted">If you prefer to inspect each step yourself.</p>
+                    </div>
+                </div>
+                <div class="command">
+                    <button class="copy-btn" type="button" data-copy-target="manual-key-command">Copy</button>
+                    <code id="manual-key-command">curl -fsSL https://zyntrixsolutions.github.io/ZyntrixOS/zyntrix-archive-keyring.gpg | sudo tee /usr/share/keyrings/zyntrix-archive-keyring.gpg &gt;/dev/null</code>
+                </div>
+                <div class="command">
+                    <button class="copy-btn" type="button" data-copy-target="manual-source-command">Copy</button>
+                    <code id="manual-source-command">echo "deb [arch=amd64 signed-by=/usr/share/keyrings/zyntrix-archive-keyring.gpg] https://zyntrixsolutions.github.io/ZyntrixOS stable main" | sudo tee /etc/apt/sources.list.d/zyntrix.list</code>
+                </div>
+                <div class="command">
+                    <button class="copy-btn" type="button" data-copy-target="manual-update-command">Copy</button>
+                    <code id="manual-update-command">sudo apt update &amp;&amp; sudo apt full-upgrade</code>
+                </div>
+                <div class="asset-links">
+                    <a class="ghost-button" href="./dists/stable/Release">View Release metadata</a>
+                    <a class="ghost-button" href="./dists/stable/main/binary-amd64/Packages">View Packages index</a>
+                    <a class="ghost-button" href="https://github.com/zyntrixsolutions/ZyntrixOS">Source repository</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            Official ZyntrixOS distribution endpoint. If this page loads, the client-side assets,
+            installer, signing key, and published package metadata are all being served from this repo.
+        </footer>
+    </div>
+
+    <script>
+        const releasePath = "./dists/stable/Release";
+        const packagesPath = "./dists/stable/main/binary-amd64/Packages";
+
+        function parseControlFile(text) {
+            const entries = [];
+            const blocks = text.trim().split(/\n\s*\n/);
+
+            for (const block of blocks) {
+                const entry = {};
+                let currentKey = "";
+
+                for (const line of block.split("\n")) {
+                    if (!line.trim()) {
+                        continue;
+                    }
+
+                    if (/^\S+:\s/.test(line)) {
+                        const separator = line.indexOf(":");
+                        currentKey = line.slice(0, separator);
+                        entry[currentKey] = line.slice(separator + 1).trim();
+                    } else if (currentKey) {
+                        entry[currentKey] += " " + line.trim();
+                    }
+                }
+
+                if (Object.keys(entry).length) {
+                    entries.push(entry);
+                }
+            }
+
+            return entries;
+        }
+
+        function parseRelease(text) {
+            const result = {};
+
+            for (const line of text.split("\n")) {
+                const match = line.match(/^([^:]+):\s*(.*)$/);
+                if (match) {
+                    result[match[1]] = match[2];
+                }
+            }
+
+            return result;
+        }
+
+        function formatDate(value) {
+            const parsed = new Date(value);
+            if (Number.isNaN(parsed.getTime())) {
+                return value || "Unknown";
+            }
+
+            return parsed.toLocaleString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+        async function loadMetadata() {
+            const repoStatus = document.getElementById("repo-status");
+            const publishedAt = document.getElementById("published-at");
+            const latestVersion = document.getElementById("latest-version");
+            const repoChannel = document.getElementById("repo-channel");
+            const packageCount = document.getElementById("package-count");
+            const packagesStatus = document.getElementById("packages-status");
+            const packageGrid = document.getElementById("package-grid");
+
+            try {
+                const [releaseResponse, packagesResponse] = await Promise.all([
+                    fetch(releasePath, { cache: "no-store" }),
+                    fetch(packagesPath, { cache: "no-store" })
+                ]);
+
+                if (!releaseResponse.ok || !packagesResponse.ok) {
+                    throw new Error("Repository metadata could not be loaded.");
+                }
+
+                const [releaseText, packagesText] = await Promise.all([
+                    releaseResponse.text(),
+                    packagesResponse.text()
+                ]);
+
+                const release = parseRelease(releaseText);
+                const packages = parseControlFile(packagesText);
+                const newestVersion = packages
+                    .map((pkg) => pkg.Version)
+                    .filter(Boolean)
+                    .sort()
+                    .at(-1);
+
+                repoChannel.textContent = release.Suite || "stable";
+                publishedAt.textContent = formatDate(release.Date);
+                latestVersion.textContent = newestVersion || "Unknown";
+                packageCount.textContent = String(packages.length);
+                repoStatus.textContent = "Live";
+                repoStatus.classList.add("ok");
+                packagesStatus.textContent = packages.length
+                    ? "Package index loaded successfully."
+                    : "No packages were found in the current index.";
+
+                if (!packages.length) {
+                    packageGrid.innerHTML =
+                        '<article class="package-card"><h3>No packages found</h3><p class="muted">The repository metadata loaded, but the package index is empty.</p></article>';
+                    return;
+                }
+
+                packageGrid.innerHTML = packages.map((pkg) => `
+                    <article class="package-card">
+                        <h3>${pkg.Package}</h3>
+                        <p class="muted">${pkg.Description || "No package description provided."}</p>
+                        <div class="package-meta">
+                            <span class="meta-pill">Version ${pkg.Version || "Unknown"}</span>
+                            <span class="meta-pill">${pkg.Architecture || "all"}</span>
+                            <span class="meta-pill">${pkg.Section || "package"}</span>
+                        </div>
+                    </article>
+                `).join("");
+            } catch (error) {
+                repoStatus.textContent = "Metadata unavailable";
+                publishedAt.textContent = "Unavailable";
+                packagesStatus.textContent = error.message;
+                packageGrid.innerHTML =
+                    '<article class="package-card"><h3>Could not read package metadata</h3><p class="muted">The page is still usable, but the live package summary could not be loaded from the repo.</p></article>';
+            }
+        }
+
+        async function copyText(button) {
+            const targetId = button.getAttribute("data-copy-target");
+            const target = document.getElementById(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(target.textContent.trim());
+                const original = button.textContent;
+                button.textContent = "Copied";
+                window.setTimeout(() => {
+                    button.textContent = original;
+                }, 1400);
+            } catch {
+                button.textContent = "Select text";
+            }
+        }
+
+        for (const button of document.querySelectorAll(".copy-btn")) {
+            button.addEventListener("click", () => copyText(button));
+        }
+
+        loadMetadata();
+    </script>
 </body>
 </html>
