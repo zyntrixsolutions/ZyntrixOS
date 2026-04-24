@@ -1,24 +1,24 @@
-Origin: ZyntrixOS
-Label: ZyntrixOS
-Suite: stable
-Codename: stable
 Architectures: amd64
+Codename: stable
 Components: main
+Date: Fri, 24 Apr 2026 13:47:14 +0000
 Description: ZyntrixOS stable package channel
-Date: Fri, 24 Apr 2026 13:39:31 +0000
+Label: ZyntrixOS
+Origin: ZyntrixOS
+Suite: stable
 MD5Sum:
- 0c19411d3d5430afbca009927d2d8cee              188 Release
- 2ffc2f0cade1d43de8aede367b60d9b5             9053 main/binary-amd64/Packages
- a92eb8d1a2b196a08ec60505e81a492c             2234 main/binary-amd64/Packages.gz
+ b81dd1b22dbe78b2a11b4b4e8adf3b7f              188 Release
+ 134d2bd3b516c4217660cc2ab4f7d94e             4526 main/binary-amd64/Packages
+ 05bfda4d4461fbbe8102e6823e643ff1             1646 main/binary-amd64/Packages.gz
 SHA1:
- 505e07ce678e273f98e3a1832aab61e6537440ca              188 Release
- 15a6b2913b6a312980eeb990d7111d28ea8f5e00             9053 main/binary-amd64/Packages
- 1c13358d573f34a3dbbf4a23a4c0423d5a3d8094             2234 main/binary-amd64/Packages.gz
+ 1f0e497332bb513e8ced8ebf29359109073053ef              188 Release
+ 4e298646d915d1b54dd01dc71398cd426a536110             4526 main/binary-amd64/Packages
+ 80f8f7b56914d4c94bbb4d94057357471d87f59e             1646 main/binary-amd64/Packages.gz
 SHA256:
- a2da35502009d723e4137ff6d6895d2b620578fa59a4031cc0ecab0e67040ec7              188 Release
- 5603b664ab310af8cbb20915dff04c87d9ffdf4d89882c24569bed6cbd44ae55             9053 main/binary-amd64/Packages
- 59b05e047321b39e26cde760a61bc5bb58c382d4414b39217e235a307651c2b1             2234 main/binary-amd64/Packages.gz
+ 4c6b67c3dea02d577201e062991c331c07f2bdde1e5bc248e19c001ac854e765              188 Release
+ 912fb15923f02d197bee3f5f39208baa9d2ae3588b45fd4b0f3b943c524f22ff             4526 main/binary-amd64/Packages
+ f8bbe86ff2c07a3b524f13beb0515c00bf01a184ebd619ba34930d76aeada720             1646 main/binary-amd64/Packages.gz
 SHA512:
- 0031ba94ad3ae6b0cfb1a69c4b63e409eacab9d72838db7c41302a8bdc04ed7620e781581804222c2e7496fec8dd6d80076b95f44edce89ce65b41a1fd8bab77              188 Release
- ef91f363a985a66e648e0b7948d54d842c4a23e925375d3a0f533e3fca39adcb307a3f25dfcb4386ca3cb3f28e48ec3d7b51b7e6365fa8c9553507f210e859d1             9053 main/binary-amd64/Packages
- cb4298fba5a8266c11d1182bb4fc36ddfeb5cb808a2c72c8c01d42b78e4cff5fc890e56a0a9b61f0792913a1f1d719b3790f9a2e74e119ee13bd9a5bfc5cd080             2234 main/binary-amd64/Packages.gz
+ d37ddfe82f3f507f6b4803e592d749b4c17ccf2b7ecd772dc04ee46d4dbc02c82e97bde5c6a28664921aa85c5a705fda537558aa97db95216324ff8a0a938bfe              188 Release
+ 775d8f185149068312d0e88567d4bc7976de44d133d0121c288f7cb9c70bb1c30b6baded85725460ab43519246e67530b0c5521ff315e80e196b8ad9aa0585b7             4526 main/binary-amd64/Packages
+ e36bc241ffe655eda317a1b754c6dd1db209cc09006f42e1731f006ded4c92b8cee9c8117d9b2bd8d145081ab94892d74a40b4f2fa4def7014cb3c50feb324aa             1646 main/binary-amd64/Packages.gz
