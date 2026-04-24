@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZyntrixOS Package Repository</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        h1 { color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 0.5rem; }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .channel { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 3px; font-weight: bold; }
+        .stable { background: #28a745; color: white; }
+        .beta { background: #ffc107; color: black; }
+        .canary { background: #6f42c1; color: white; }
+    </style>
+</head>
+<body>
+    <h1>ZyntrixOS Package Repository</h1>
+    <p>Static APT repository for ZyntrixOS system updates.</p>
+    
+    <h2>Repository Info</h2>
+    <ul>
+        <li><strong>Channel:</strong> <span class="channel stable">stable</span></li>
+        <li><strong>Version:</strong> 0.1.0-1</li>
+        <li><strong>Architecture:</strong> amd64</li>
+        <li><strong>URL:</strong> <code>https://amakodev.github.io/ZyntrixOS</code></li>
+    </ul>
+    
+    <h2>Available Packages</h2>
+    <ul>
+        <li><code>zyntrix-update</code> — Update daemon and CLI</li>
+        <li><code>zyntrix-shell</code> — Desktop UI and shell components</li>
+        <li><code>zyntrix-cli</code> — Developer CLI and templates</li>
+        <li><code>zyntrix-config</code> — WM configs and theming</li>
+        <li><code>zyntrix-os-base</code> — OS branding assets</li>
+    </ul>
+    
+    <h2>Quick Setup</h2>
+    <p>On a ZyntrixOS system, run:</p>
+    <pre>sudo ./scripts/setup-repo.sh \
+  --repo-url https://amakodev.github.io/ZyntrixOS \
+  --channel stable</pre>
+    
+    <h2>Manual APT Setup</h2>
+    <p>Add to <code>/etc/apt/sources.list.d/zyntrix.list</code>:</p>
+    <pre>deb [arch=amd64] https://amakodev.github.io/ZyntrixOS stable main</pre>
+    
+    <h2>Repository Structure</h2>
+    <pre>dists/stable/
+├── Release
+├── main/binary-amd64/Packages.gz
+└── ...
+
+pool/main/z/
+├── zyntrix-cli/*.deb
+├── zyntrix-config/*.deb
+├── zyntrix-os-base/*.deb
+├── zyntrix-shell/*.deb
+└── zyntrix-update/*.deb</pre>
+    
+    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        <p>ZyntrixOS — <a href="https://github.com/amakodev/ZyntrixOS">GitHub</a></p>
+    </footer>
+</body>
+</html>
