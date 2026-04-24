@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: ZyntrixOS
+Label: ZyntrixOS
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: ZyntrixOS stable package channel
+Date: Fri, 24 Apr 2026 10:53:44 +0000
+MD5Sum:
+ de758e863f64ca912785864f96a5aefa              188 Release
+ eed27895d3799b84296d61ebcf7d3570             4527 main/binary-amd64/Packages
+ dd8c4b33231d5475c62c48616b0c7e52             1657 main/binary-amd64/Packages.gz
+SHA1:
+ 3ae598e3433f7bbe9fa2a65536f2b03afde6afdd              188 Release
+ 7f5dbcade107c43a49e40f335a158ffb485768ef             4527 main/binary-amd64/Packages
+ c39eb6127872c1eb4493745b0729a8acfb4627be             1657 main/binary-amd64/Packages.gz
+SHA256:
+ b723b5f22a553000878d945f2a6c6aeaf1337d42c683b898beb0ada85158080f              188 Release
+ d2b1c1c4511aebed2cf199dbdfb31e1731e2a4bfbbaac7028205697e42d9e314             4527 main/binary-amd64/Packages
+ bd81f9b568f881779bfbbc7d7cee83a20a352fe5c0b049a80c333ee27b784a62             1657 main/binary-amd64/Packages.gz
+SHA512:
+ a7f4c37decb443180479440386f65a6d1c462aac746d204451d2f961a1fe3a5aeb205744f281cd59855a6d8d912d51dfd2c41979a2292034d2faab6549f2de37              188 Release
+ ba880f46811a9521839a557430661405b731386ed10c1b1d7e95154938bd046a942d4bb9867c4ec6fd70b67aa4d0a7055a96d858982759b125d290514bf58649             4527 main/binary-amd64/Packages
+ d7d92b670ad197c978a8c709d23c8d3a392f3caf5afbfb1c4e7a0b13d9eb8983bb669704bdcc49987049775a1364ee030a4e166c6ba66e39a40fc4a9bf376fa0             1657 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEWbuo1wGwGaY8jDocEiZQyOh0rsoFAmnrS7gACgkQEiZQyOh0
+rspHaxAAtSbNsE9P098UHY4rH2i8dOmV6aLhpELmI+97ecF0xPVXTj114uWaE/U5
+9v4/4BC1fuwzZvzoClzKnH5MWzZLVeqOEUZWtTykaNOHSw6piDaLYcyOaJldv/eO
+6XZ7j4mdlbtYuVYHm3/nHuL5aRdrE/MBNJ5xlc0yhuwv+D1+FO+Eel8czTlZ0MB/
+FNv7i68mim5F+MeOSTYIAYb+jTjU6vD6FmCErnIo6PEVvLhGi4nxCD7q4FOZqOht
+JuIcfLlBGyP6hyHVWzOTSLYMtt6wf1rzl6iFAzOdZKliTI7YxgddcbhGNwf3mdw7
+pjSXgNHEbA5QJrJ/YCQRXczy9l19ovTiRXpc4J0NtAwjkp1M85PPtrF7ipgfIz4+
+GuUeOtEgp/EnsPNmoZpdIABL1dX/vqUFGeCvPcxkhMYoE+efHDLqjN29FU3k+t+u
+9r45bqfJ6ISWjdL56wunXFBE7GRR19Lx3obbM2huMpX8vmKZ3poVH6xbja2KuaAe
+N11bg1RYVvLqWuT6EjNgnvcZ1WsNREBjayV2hwzR/PeuiKj/lu+phvZXhBMUcQgk
+7LsXgMo9mc06rJDpcnbq7w/16MQEJSRlcdnn7jLIL+1dZjNuZxWAzFPbBmMzcyZd
+AZCHy2ArRc7zp1Fuxq3BHoTKDheWZJjNAL/Z/2hPIN3NBapyIgM=
+=87sY
+-----END PGP SIGNATURE-----
