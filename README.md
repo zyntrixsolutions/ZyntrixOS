@@ -48,7 +48,7 @@ Current packages:
 - `zyntrix-shell`
 - `zyntrix-update`
 
-Latest published revision: `0.1.0-2`.
+Latest published revision: `0.1.0-6`.
 
 ## Publishing Checklist
 
