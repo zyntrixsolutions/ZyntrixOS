@@ -15,6 +15,7 @@ This roadmap is intentionally checklist based so it can be updated as repository
 ## Packages
 
 - [x] Publish base ZyntrixOS package set.
+- [x] Publish `0.1.0-2` package refresh for safer install scripts.
 - [ ] Add package-level changelog entries for each package update.
 - [ ] Add package descriptions that explain user-visible behavior.
 - [ ] Add rollback notes for high-risk package changes.

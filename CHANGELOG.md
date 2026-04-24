@@ -7,6 +7,7 @@ All notable changes to this update repository are tracked here.
 ### Fixed
 
 - Resolved APT `Hash Sum mismatch` risk by identifying stale signed metadata as the cause.
+- Published `0.1.0-2` packages to avoid `zyntrix-shell` maintainer scripts terminating `dpkg` during upgrades.
 - Improved command block contrast on the updates page so terminal commands remain readable.
 - Strengthened page colors, spacing, borders, and focus states for a clearer update workflow.
 

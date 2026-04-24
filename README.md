@@ -48,6 +48,8 @@ Current packages:
 - `zyntrix-shell`
 - `zyntrix-update`
 
+Latest published revision: `0.1.0-2`.
+
 ## Publishing Checklist
 
 Use this checklist every time packages are added, removed, or rebuilt.
@@ -70,6 +72,14 @@ If a test machine has cached stale metadata after a fixed publish, clear the loc
 ```bash
 sudo rm -f /var/lib/apt/lists/*zyntrixsolutions.github.io*
 sudo apt clean
+sudo apt update
+```
+
+If `dpkg` was interrupted during a previous package install, repair the local package database before retrying:
+
+```bash
+sudo dpkg --configure -a
+sudo apt --fix-broken install
 sudo apt update
 ```
 
