@@ -1,24 +1,24 @@
-Architectures: amd64
-Codename: stable
-Components: main
-Date: Fri, 24 Apr 2026 13:47:14 +0000
-Description: ZyntrixOS stable package channel
-Label: ZyntrixOS
 Origin: ZyntrixOS
+Label: ZyntrixOS
 Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: ZyntrixOS stable package channel
+Date: Fri, 24 Apr 2026 14:12:07 +0000
 MD5Sum:
- b81dd1b22dbe78b2a11b4b4e8adf3b7f              188 Release
- 134d2bd3b516c4217660cc2ab4f7d94e             4526 main/binary-amd64/Packages
- 05bfda4d4461fbbe8102e6823e643ff1             1646 main/binary-amd64/Packages.gz
+ 680e4b91114e9d72d291ac890c3b95ef              188 Release
+ 0e5318dc70e14f8ba0d1d0c74159ca23             9071 main/binary-amd64/Packages
+ e4f8444f93e3752bdb0997b13da536ec             2233 main/binary-amd64/Packages.gz
 SHA1:
- 1f0e497332bb513e8ced8ebf29359109073053ef              188 Release
- 4e298646d915d1b54dd01dc71398cd426a536110             4526 main/binary-amd64/Packages
- 80f8f7b56914d4c94bbb4d94057357471d87f59e             1646 main/binary-amd64/Packages.gz
+ 21c9f6b3e6cad4caead0c7d2d6f676b3ee2bc269              188 Release
+ 61677e7deb95346232e21001a986fd9dffe6f7ee             9071 main/binary-amd64/Packages
+ 104871574d0dc2e4a07d02af6d530384fde8992c             2233 main/binary-amd64/Packages.gz
 SHA256:
- 4c6b67c3dea02d577201e062991c331c07f2bdde1e5bc248e19c001ac854e765              188 Release
- 912fb15923f02d197bee3f5f39208baa9d2ae3588b45fd4b0f3b943c524f22ff             4526 main/binary-amd64/Packages
- f8bbe86ff2c07a3b524f13beb0515c00bf01a184ebd619ba34930d76aeada720             1646 main/binary-amd64/Packages.gz
+ 5a8d16e05db573a1b308eeaea9ed5f0413f79613016e6a433307a1ff1e747eac              188 Release
+ 9b8afae4f66cec024ff846f6a445a56874f939e3c3986969823de7135d96cb6a             9071 main/binary-amd64/Packages
+ 4e3e644eeaf8fde19b69d97d1557677a13299d58af492605cdcaf7865e080c89             2233 main/binary-amd64/Packages.gz
 SHA512:
- d37ddfe82f3f507f6b4803e592d749b4c17ccf2b7ecd772dc04ee46d4dbc02c82e97bde5c6a28664921aa85c5a705fda537558aa97db95216324ff8a0a938bfe              188 Release
- 775d8f185149068312d0e88567d4bc7976de44d133d0121c288f7cb9c70bb1c30b6baded85725460ab43519246e67530b0c5521ff315e80e196b8ad9aa0585b7             4526 main/binary-amd64/Packages
- e36bc241ffe655eda317a1b754c6dd1db209cc09006f42e1731f006ded4c92b8cee9c8117d9b2bd8d145081ab94892d74a40b4f2fa4def7014cb3c50feb324aa             1646 main/binary-amd64/Packages.gz
+ 5ef4f7fc0c6cf962ac2866bd21e9fb3987383cfc6832059dedbeb2b7747b49ba2283fa151b6126aac3605edaf5a20e47c8f8e87b09d769204bb9e7fc33227051              188 Release
+ 9c243e7648c3ee7922a8d2c0c9bb731403f338a63667eba492d1dc5d7170f8efc1d614e3f191a60199c0513018a0266c4a2125f90e6844c41cab11065ef2c36e             9071 main/binary-amd64/Packages
+ 6c20f50fc175d055ea5f6f7240fbf25917b9244060ed74dbb021e1f1409a654c878f41a6c76e872335940c790f2682825f978b7ae0adff0f3de5a526558db9be             2233 main/binary-amd64/Packages.gz
