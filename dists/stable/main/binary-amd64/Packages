@@ -1,0 +1,106 @@
+Package: zyntrix-cli
+Version: 0.1.0-1
+Architecture: all
+Maintainer: ZyntrixOS Maintainers <maintainers@zyntrixos.local>
+Installed-Size: 89
+Depends: python3:any, python3 (>= 3.11) | python3-tomli, zyntrix-update (>= 0.1.0-1)
+Recommends: git, tmux, rsync, podman, caddy, cloudflared
+Breaks: zyntrix-dev-cli (<< 1.0.0), zyntrixos-cli (<< 1.0.0)
+Replaces: zyntrix-dev-cli (<< 1.0.0), zyntrixos-cli (<< 1.0.0)
+Filename: pool/main/z/zyntrix-cli/zyntrix-cli_0.1.0-1_all.deb
+Size: 20356
+MD5sum: a02be128dbfa4cf4956c8e21d6a8bab7
+SHA1: a10814a40de0011c1a722cf9149e1aa04a4486ec
+SHA256: 1e8dfde1cf038d0fe27f818f79f5d02febfd938d54e87d698cc7894e48b102ef
+Section: admin
+Priority: optional
+Homepage: https://zyntrixos.local
+Description: ZyntrixOS command-line tools and project templates
+ Developer CLI, project templates, update commands, and channel management
+ wrappers for ZyntrixOS systems.
+
+Package: zyntrix-config
+Version: 0.1.0-1
+Architecture: all
+Maintainer: ZyntrixOS Maintainers <maintainers@zyntrixos.local>
+Installed-Size: 468
+Depends: rsync, zyntrix-update (>= 0.1.0-1)
+Recommends: zyntrix-shell, papirus-icon-theme, fonts-inter, fonts-jetbrains-mono
+Breaks: zyntrix-skel (<< 1.0.0), zyntrixos-config (<< 1.0.0)
+Replaces: zyntrix-skel (<< 1.0.0), zyntrixos-config (<< 1.0.0)
+Filename: pool/main/z/zyntrix-config/zyntrix-config_0.1.0-1_all.deb
+Size: 420580
+MD5sum: 472b39b67abffb4ffbe4a1927203b7f1
+SHA1: 430deb62069fa8ed51bb2152f8b6e53d26a7b554
+SHA256: f4cd9681b55e6182699d9e790ca29b0eee828a4a3a7fa6e44efbe4ff7b65b44d
+Section: admin
+Priority: optional
+Homepage: https://zyntrixos.local
+Description: ZyntrixOS configuration overlays
+ Default user skeleton files, window-manager configuration, GTK defaults,
+ X session entries, and shared branding assets for new ZyntrixOS users.
+
+Package: zyntrix-os-base
+Version: 0.1.0-1
+Architecture: all
+Maintainer: ZyntrixOS Maintainers <maintainers@zyntrixos.local>
+Installed-Size: 445
+Depends: base-files, procps, zyntrix-update (>= 0.1.0-1)
+Recommends: plymouth, grub-common, slim | lightdm
+Breaks: zyntrix-branding (<< 1.0.0), zyntrixos-base (<< 1.0.0)
+Replaces: zyntrix-branding (<< 1.0.0), zyntrixos-base (<< 1.0.0)
+Filename: pool/main/z/zyntrix-os-base/zyntrix-os-base_0.1.0-1_all.deb
+Size: 414580
+MD5sum: fd2275d0645541f750efea43c57d4943
+SHA1: f25fde4879fa66073d7adf418f8dd1564b0b1a7d
+SHA256: e24e8c988d38cfe4524be8789f250d8e34349e142fbf6987c90b2b9a445a5bb7
+Section: admin
+Priority: optional
+Homepage: https://zyntrixos.local
+Description: ZyntrixOS base identity and OS customizations
+ OS identity, branding assets, sysctl tuning, boot theme assets, and base
+ customization hooks for Debian-compatible ZyntrixOS installations.
+
+Package: zyntrix-shell
+Version: 0.1.0-1
+Architecture: all
+Maintainer: ZyntrixOS Maintainers <maintainers@zyntrixos.local>
+Installed-Size: 868
+Depends: python3:any, python3-gi, gir1.2-gtk-3.0, gir1.2-gdkpixbuf-2.0, python3 (>= 3.11) | python3-tomli, procps, zyntrix-update (>= 0.1.0-1)
+Recommends: herbstluftwm | openbox, x11-utils, xdotool, wmctrl, libnotify-bin
+Breaks: zyntrix-shell-legacy (<< 1.0.0), zyntrixos-shell (<< 1.0.0)
+Replaces: zyntrix-shell-legacy (<< 1.0.0), zyntrixos-shell (<< 1.0.0)
+Filename: pool/main/z/zyntrix-shell/zyntrix-shell_0.1.0-1_all.deb
+Size: 117896
+MD5sum: f838137d9060e95b5ee6d9d274b34a48
+SHA1: e57b48006155dda937ac0b8f96af3ca2cd2f4e63
+SHA256: 01a5fbada77207361019b7fcef4fcf9f5a8c50acdadb092d93d69e278abbdc05
+Section: x11
+Priority: optional
+Homepage: https://zyntrixos.local
+Description: ZyntrixOS graphical shell
+ Python and GTK3 shell components for ZyntrixOS, installed under
+ /opt/zyntrix-shell with a stable /usr/local/bin/zyntrix-shell launcher.
+
+Package: zyntrix-update
+Version: 0.1.0-1
+Architecture: all
+Maintainer: ZyntrixOS Maintainers <maintainers@zyntrixos.local>
+Installed-Size: 47
+Depends: python3:any, apt, ca-certificates, gnupg, dpkg, procps, rsync
+Recommends: libnotify-bin
+Breaks: zyntrixos-update (<< 1.0.0)
+Replaces: zyntrixos-update (<< 1.0.0)
+Filename: pool/main/z/zyntrix-update/zyntrix-update_0.1.0-1_all.deb
+Size: 10208
+MD5sum: d1e7d3ea9261c7288ec7c7ae5d95715e
+SHA1: 77bac07006887a79a91dd25680cfb20c9399c40f
+SHA256: 14b9d915828b32e8ab4c2f46d3ecc39f225b5a51ef38da3e7817aa1f7f87a980
+Section: admin
+Priority: optional
+Homepage: https://zyntrixos.local
+Description: ZyntrixOS package update and rollback engine
+ Repository configuration helpers, version manifest management, safe backup,
+ config migration, channel switching, health checks, and rollback tooling for
+ signed APT-based ZyntrixOS updates.
+

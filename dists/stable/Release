@@ -1,0 +1,24 @@
+Origin: ZyntrixOS
+Label: ZyntrixOS
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: ZyntrixOS stable package channel
+Date: Fri, 24 Apr 2026 09:07:50 +0000
+MD5Sum:
+ 7ee723eaf8f39114e5c821f7cb0fa963              188 Release
+ 54e0b3d69f616f855b8b18ef6ff97681             4527 main/binary-amd64/Packages
+ b0c624f1aa13e4a9332c66738646d165             1657 main/binary-amd64/Packages.gz
+SHA1:
+ 5ff096c96897e9e8333be1e3c7347f62abf06d73              188 Release
+ c046533efaf992fcd8baa95fca9ccce53e41ddc7             4527 main/binary-amd64/Packages
+ 7bef1f87858584d777b740006544be014d12e17a             1657 main/binary-amd64/Packages.gz
+SHA256:
+ 2fe0a2e8e65285b7b9de7932eb21854988757272eb10bd798126f5faad045cc2              188 Release
+ eced17a7334ee9593fc1459513c228a5ba9cdf9dd5edf2f72a1af7a6d02725b8             4527 main/binary-amd64/Packages
+ 4dac25c25f772f0c4dab4d0d9616d1154a44935666c63add62814828d03a6939             1657 main/binary-amd64/Packages.gz
+SHA512:
+ 18a10c41509ed99f6899d31a12e4d63ab2a005140fdefbbbfe8df49344665a65dae826856ce5971cb69b08e5edea9b4c1a7cc4a12dd4751d806ad9b75b262b25              188 Release
+ b499293e523ed28695258d614e5ea389935c69c609259852b5a5a73664b356b1d400406b4136592257bb35b21b05b62e81f9631028387a10b9860c5d9294ac91             4527 main/binary-amd64/Packages
+ 8da086ac4ae3a4bd5f61b8a0eb53ce2c779a8f92ad20080e10956852a99a38ee990d30a475934542297448f86f4a8c7d787e6d40f324f4e01e0633a766d56128             1657 main/binary-amd64/Packages.gz
