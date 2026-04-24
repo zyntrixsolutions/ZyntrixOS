@@ -10,20 +10,22 @@
     >
     <style>
         :root {
-            --bg: #f5efe4;
-            --panel: rgba(255, 252, 246, 0.88);
-            --panel-strong: #fffaf0;
-            --text: #1f1a16;
-            --muted: #65594f;
-            --line: rgba(80, 58, 42, 0.14);
-            --accent: #c84f1b;
-            --accent-dark: #8f3410;
-            --accent-soft: rgba(200, 79, 27, 0.12);
-            --success: #215f3d;
-            --shadow: 0 24px 80px rgba(74, 41, 22, 0.14);
-            --radius-lg: 28px;
-            --radius-md: 18px;
-            --radius-sm: 12px;
+            --bg: #f7f8f5;
+            --panel: #ffffff;
+            --panel-strong: #f1f5ef;
+            --text: #171b18;
+            --muted: #48514b;
+            --line: #d6ddd5;
+            --accent: #b63d19;
+            --accent-dark: #7f250e;
+            --accent-soft: #f7ded5;
+            --success: #17613f;
+            --shell: #141915;
+            --shell-text: #f7fff5;
+            --shadow: 0 18px 54px rgba(23, 27, 24, 0.1);
+            --radius-lg: 8px;
+            --radius-md: 8px;
+            --radius-sm: 8px;
             --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
             --sans: "Space Grotesk", "Segoe UI", sans-serif;
         }
@@ -37,9 +39,7 @@
             font-family: var(--sans);
             color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(255, 176, 115, 0.45), transparent 28%),
-                radial-gradient(circle at top right, rgba(255, 228, 162, 0.55), transparent 30%),
-                linear-gradient(180deg, #f4ebdd 0%, #f7f2e8 45%, #efe4d2 100%);
+                linear-gradient(180deg, #f7f8f5 0%, #edf2ee 48%, #f7f8f5 100%);
             min-height: 100vh;
         }
 
@@ -59,21 +59,13 @@
             border: 1px solid var(--line);
             border-radius: var(--radius-lg);
             background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 247, 235, 0.94)),
-                linear-gradient(135deg, rgba(200, 79, 27, 0.1), rgba(33, 95, 61, 0.06));
+                linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 239, 0.98));
             box-shadow: var(--shadow);
             padding: 34px;
         }
 
         .hero::after {
-            content: "";
-            position: absolute;
-            inset: auto -10% -30% auto;
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(200, 79, 27, 0.24), transparent 66%);
-            pointer-events: none;
+            content: none;
         }
 
         .eyebrow {
@@ -82,8 +74,8 @@
             gap: 10px;
             padding: 8px 14px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid rgba(80, 58, 42, 0.1);
+            background: var(--panel-strong);
+            border: 1px solid var(--line);
             color: var(--muted);
             font-size: 0.9rem;
         }
@@ -103,7 +95,7 @@
         h1 {
             font-size: clamp(2.3rem, 5vw, 4.8rem);
             line-height: 0.96;
-            letter-spacing: -0.05em;
+            letter-spacing: 0;
             margin: 20px 0 16px;
             max-width: 10ch;
         }
@@ -136,7 +128,6 @@
         .package-card {
             border: 1px solid var(--line);
             background: var(--panel);
-            backdrop-filter: blur(12px);
             border-radius: var(--radius-md);
         }
 
@@ -178,17 +169,17 @@
         .shellbox {
             position: relative;
             padding: 16px 16px 18px;
-            background: #1d1916;
-            color: #f7eadc;
+            background: var(--shell);
+            color: var(--shell-text);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid #2e3931;
             overflow: hidden;
         }
 
         .shellbox::before {
             content: "terminal";
             display: block;
-            color: rgba(247, 234, 220, 0.64);
+            color: #b7c6b9;
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.16em;
@@ -207,8 +198,9 @@
             position: relative;
             padding: 16px 70px 16px 16px;
             border-radius: var(--radius-sm);
-            background: #231d18;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--shell);
+            color: var(--shell-text);
+            border: 1px solid #2e3931;
             margin-top: 12px;
         }
 
@@ -218,8 +210,8 @@
             right: 12px;
             border: 0;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff7ec;
+            background: #eef7ec;
+            color: #152018;
             padding: 8px 12px;
             cursor: pointer;
             font: inherit;
@@ -227,7 +219,7 @@
 
         .copy-btn:hover,
         .copy-btn:focus-visible {
-            background: rgba(255, 255, 255, 0.2);
+            background: #dbead8;
             outline: none;
         }
 
@@ -254,11 +246,11 @@
 
         .button {
             background: var(--accent);
-            color: #fff8f1;
+            color: #fffaf6;
         }
 
         .ghost-button {
-            background: rgba(255, 255, 255, 0.72);
+            background: #ffffff;
             border: 1px solid var(--line);
             color: var(--text);
         }
@@ -320,7 +312,7 @@
             gap: 8px;
             padding: 9px 12px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.7);
+            background: var(--panel-strong);
             border: 1px solid var(--line);
             color: var(--muted);
             font-size: 0.92rem;
@@ -361,7 +353,7 @@
         .meta-pill {
             padding: 6px 10px;
             border-radius: 999px;
-            background: rgba(200, 79, 27, 0.08);
+            background: var(--accent-soft);
             color: var(--accent-dark);
             font-size: 0.85rem;
         }
